@@ -34,3 +34,4 @@ export * from './processStartDTO';
 export * from './processStopDTO';
 export * from './quasiSaltHashDTO';
 export * from './quasiSaltHashVerifyDTO';
+export * from './serverResponse';

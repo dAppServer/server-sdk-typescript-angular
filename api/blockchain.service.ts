@@ -24,6 +24,8 @@ import { BlockchainLetheanDaemonStartDTO } from '../model/blockchainLetheanDaemo
 import { BlockchainLetheanRPCDTO } from '../model/blockchainLetheanRPCDTO';
 // @ts-ignore
 import { BlockchainLetheanWalletStartDTO } from '../model/blockchainLetheanWalletStartDTO';
+// @ts-ignore
+import { ServerResponse } from '../model/serverResponse';
 
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -365,10 +367,10 @@ export class BlockchainService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any>;
-    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpResponse<any>>;
-    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<HttpEvent<any>>;
-    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: undefined, context?: HttpContext}): Observable<any> {
+    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<ServerResponse>;
+    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<ServerResponse>>;
+    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<ServerResponse>>;
+    public startDaemon(blockchainLetheanDaemonStartDTO: BlockchainLetheanDaemonStartDTO, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (blockchainLetheanDaemonStartDTO === null || blockchainLetheanDaemonStartDTO === undefined) {
             throw new Error('Required parameter blockchainLetheanDaemonStartDTO was null or undefined when calling startDaemon.');
         }
@@ -379,6 +381,7 @@ export class BlockchainService {
         if (localVarHttpHeaderAcceptSelected === undefined) {
             // to determine the Accept header
             const httpHeaderAccepts: string[] = [
+                'application/json'
             ];
             localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
         }
@@ -413,7 +416,7 @@ export class BlockchainService {
         }
 
         let localVarPath = `/blockchain/lethean/daemon/start`;
-        return this.httpClient.request<any>('post', `${this.configuration.basePath}${localVarPath}`,
+        return this.httpClient.request<ServerResponse>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 body: blockchainLetheanDaemonStartDTO,

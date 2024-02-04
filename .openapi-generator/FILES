@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
@@ -53,6 +52,7 @@ model/processStartDTO.ts
 model/processStopDTO.ts
 model/quasiSaltHashDTO.ts
 model/quasiSaltHashVerifyDTO.ts
+model/serverResponse.ts
 ng-package.json
 package.json
 param.ts

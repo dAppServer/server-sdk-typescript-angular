@@ -14,7 +14,7 @@ import { ProcessAddDTO } from './processAddDTO';
 
 export interface ProcessRunDTO { 
     command: string;
-    args: Array;
+    args: string;
     options: ProcessAddDTO;
 }
 

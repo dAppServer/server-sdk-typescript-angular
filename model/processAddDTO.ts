@@ -13,7 +13,7 @@
 
 export interface ProcessAddDTO { 
     key: string;
-    command: Array;
+    command: string;
     stdOut: object;
     stdIn: object;
     stdErr: object;
